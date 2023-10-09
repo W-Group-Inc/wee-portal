@@ -108,19 +108,19 @@
                             <div class='row'>
                                 <div class='col-md-3'>
                                     <div class="m-b-sm">
-                                        <img alt="image" class="img-circle " style='width:100px;' src="{{asset('/img/123.png')}}">
+                                        <img alt="image" class="img-circle " style='width:100px;' src="{{asset('/img/123.PNG')}}">
                                     </div>
                                     <p class="font-bold">EDMS</p>
                                 </div>
                                 <div class='col-md-3'>
                                     <div class="m-b-sm">
-                                        <img alt="image" class="img-circle" style='width:100px;'   src="{{asset('/img/123.png')}}">
+                                        <img alt="image" class="img-circle" style='width:100px;'   src="{{asset('/img/123.PNG')}}">
                                     </div>
                                     <p class="font-bold">Netsuite</p>
                                 </div>
                                 <div class='col-md-3'>
                                     <div class="m-b-sm">
-                                        <img alt="image" class="img-circle" style='width:100px;'  src="{{asset('/img/123.png')}}">
+                                        <img alt="image" class="img-circle" style='width:100px;'  src="{{asset('/img/123.PNG')}}">
                                     </div>
                                     <p class="font-bold">SAP</p>
                                 </div>
