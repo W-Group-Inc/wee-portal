@@ -18,7 +18,7 @@
                         </h2>
                             <small>Position</small>
                         </div>
-                        <img src="img/a4.jpg" class="img-circle circle-border m-b-md" alt="profile">
+                        <img src="{{asset('img/a4.jpg')}}" class="img-circle circle-border m-b-md" alt="profile">
                         <div>
                             <span>W Group Inc</span> |
                             <span>ITD</span> |
@@ -108,19 +108,19 @@
                             <div class='row'>
                                 <div class='col-md-3'>
                                     <div class="m-b-sm">
-                                        <img alt="image" class="img-circle " style='width:100px;' src="img/123.png">
+                                        <img alt="image" class="img-circle " style='width:100px;' src="{{asset('img/123.png')}}">
                                     </div>
                                     <p class="font-bold">EDMS</p>
                                 </div>
                                 <div class='col-md-3'>
                                     <div class="m-b-sm">
-                                        <img alt="image" class="img-circle" style='width:100px;'   src="img/123.png">
+                                        <img alt="image" class="img-circle" style='width:100px;'   src="{{asset('img/123.png')}}">
                                     </div>
                                     <p class="font-bold">Netsuite</p>
                                 </div>
                                 <div class='col-md-3'>
                                     <div class="m-b-sm">
-                                        <img alt="image" class="img-circle" style='width:100px;'  src="img/123.png">
+                                        <img alt="image" class="img-circle" style='width:100px;'  src="{{asset('img/123.png')}}">
                                     </div>
                                     <p class="font-bold">SAP</p>
                                 </div>
@@ -158,7 +158,7 @@
 
                             <div class="feed-element">
                                 <a href="profile.html" class="pull-left">
-                                    <img alt="image" class="img-circle img-sm" src="img/profile.jpg">
+                                    <img alt="image" class="img-circle img-sm" src="{{asset('img/profile.jpg')}}">
                                 </a>
                                 <div class="media-body ">
                                     <small class="pull-right">Position <br>
@@ -181,12 +181,11 @@
                 <div class="ibox-content">
 
                     <div class="lightBoxGallery">
-                        <a href="img/gallery/1.jpg" title="Image from Unsplash" data-gallery=""><img src="img/gallery/1s.jpg"></a>
-                        <a href="img/gallery/2.jpg" title="Image from Unsplash" data-gallery=""><img src="img/gallery/2s.jpg"></a>
-                        <a href="img/gallery/3.jpg" title="Image from Unsplash" data-gallery=""><img src="img/gallery/3s.jpg"></a>
-                        <a href="img/gallery/4.jpg" title="Image from Unsplash" data-gallery=""><img src="img/gallery/4s.jpg"></a>
-                        <a href="img/gallery/5.jpg" title="Image from Unsplash" data-gallery=""><img src="img/gallery/5s.jpg"></a>
-                        <a href="img/gallery/6.jpg" title="Image from Unsplash" data-gallery=""><img src="img/gallery/6s.jpg"></a>
+                        <a href="{{asset('img/gallery/1.jpg')}}" title="Image from Unsplash" data-gallery=""><img src="img/gallery/1s.jpg"></a>
+                        <a href="{{asset('img/gallery/2.jpg')}}" title="Image from Unsplash" data-gallery=""><img src="img/gallery/2s.jpg"></a>
+                        <a href="{{asset('img/gallery/3.jpg')}}" title="Image from Unsplash" data-gallery=""><img src="img/gallery/3s.jpg"></a>
+                        <a href="{{asset('img/gallery/4.jpg')}}" title="Image from Unsplash" data-gallery=""><img src="img/gallery/4s.jpg"></a>
+                        <a href="{{asset('img/gallery/5.jpg')}}" title="Image from Unsplash" data-gallery=""><img src="img/gallery/5s.jpg"></a>
 
                         
                     </div>
