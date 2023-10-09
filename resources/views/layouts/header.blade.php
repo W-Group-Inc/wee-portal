@@ -19,7 +19,7 @@
     <!-- Styles -->
     <!-- endinject -->
     
-    <link rel="icon" type="image/png" href="{{ asset('/images/MYPORTAL_icon.png')}}"/>
+    <link rel="icon" type="image/png" href="{{ asset('/images/icon.PNG')}}"/>
     <link href="{{ asset('/inside/login_css/css/bootstrap.min.css')}}" rel="stylesheet">
     
     <link href="{{ asset('/inside/login_css/font-awesome/css/font-awesome.css')}}" rel="stylesheet">
