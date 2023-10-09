@@ -19,13 +19,13 @@
     <!-- Styles -->
     <!-- endinject -->
     
-    <link rel="icon" type="image/png" href="{{ asset('images/MYPORTAL_icon.png')}}"/>
-    <link href="{{ asset('inside/login_css/css/bootstrap.min.css')}}" rel="stylesheet">
+    <link rel="icon" type="image/png" href="{{ asset('/images/MYPORTAL_icon.png')}}"/>
+    <link href="{{ asset('/inside/login_css/css/bootstrap.min.css')}}" rel="stylesheet">
     
-    <link href="{{ asset('inside/login_css/font-awesome/css/font-awesome.css')}}" rel="stylesheet">
+    <link href="{{ asset('/inside/login_css/font-awesome/css/font-awesome.css')}}" rel="stylesheet">
     
-    <link href="{{ asset('inside/login_css/css/animate.css')}}" rel="stylesheet">
-    <link href="{{ asset('inside/login_css/css/style.css')}}" rel="stylesheet">
+    <link href="{{ asset('/inside/login_css/css/animate.css')}}" rel="stylesheet">
+    <link href="{{ asset('/inside/login_css/css/style.css')}}" rel="stylesheet">
     @yield('css')
   <!-- End plugin css for this page -->
     <style>
