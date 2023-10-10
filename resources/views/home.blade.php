@@ -8,23 +8,17 @@
 @section('content')
 <div class="wrapper wrapper-content">
     <div class="row">
-        <div class="col-lg-3">
+        <div class="col-lg-2">
             <div class="ibox">
-                <div class="ibox float-e-margins">
-                    <div class="widget-head-color-box blue-bg p-lg text-center">
-                        <div class="m-b-md">
-                        <h2 class="font-bold no-margins">
-                            Alex Smith
-                        </h2>
-                            <small>Position</small>
-                        </div>
-                        <img src="{{asset('img/a4.jpg')}}" class="img-circle circle-border m-b-md" alt="profile">
-                        <div>
-                            <span>W Group Inc</span> |
-                            <span>ITD</span> |
-                            <span>Fifth Ave, Taguig City</span>
-                        </div>
-                    </div>
+                <div class="ibox-content">
+                    <div>
+                        <img src="{{asset('img/a4.jpg')}}" class="img-circle img-sm circle-border" style='width:50px;height:50px;vertical-align:middle;' alt="profile">
+                       
+                        <b><span style="">Alex Smith</span></b>
+                      </div>
+                      <h6><i class="fa fa-envelope"></i> renz.cabato@wgroup.com.ph <br></h6>
+                      <h6><i class="fa fa-window-maximize"></i> Information Technology Department <br></h6>
+                        <h6><i class="fa fa-briefcase"></i> System Development Head<br></h6>
                 </div>
             </div>
             <div class="ibox">
@@ -67,83 +61,86 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-6">
-            <div class='row'>
-                <div class="col-md-6">
-                    <div class="ibox float-e-margins">
-                        <div class="ibox-title">
-                            <h5>{{date('M. d, Y')}} <i class="fa fa-clock-o icon-md text-info d-flex align-self-center mr-3"></i></h5> 
-                            <div class="ibox-tools">
-                                <span id='span' class="label label-warning-light pull-right"></span>
-                            </div>
-                        </div>
-                        <div class="ibox-content">
-                           
-                            <div class="card-body">
-                                <h3 class="card-title">
-                                    </h3>
-                                <div class="media">
-                                    
-                                    <div class="media-body">
-                                      <p class="card-text">Time In : 
-                                         NO TIME IN 
-                                         </p>
-                                       
-                                    </div>
-                                  </div>
-                              </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class='row'>
-                <div class="col-md-12">
-                    <div class="ibox float-e-margins">
-                        <div class="ibox-title">
-                            <h5>Portals</h5>
-                        </div>
-                        <div class="ibox-content text-center">
-                            <input  placeholder="Search ..." class="form-control">
-                            <hr>
-                            <div class='row'>
-                                <div class='col-md-3'>
-                                    <div class="m-b-sm">
-                                        <img alt="image" class="img-circle " style='width:100px;' src="{{asset('/img/123.PNG')}}">
-                                    </div>
-                                    <p class="font-bold">EDMS</p>
-                                </div>
-                                <div class='col-md-3'>
-                                    <div class="m-b-sm">
-                                        <img alt="image" class="img-circle" style='width:100px;'   src="{{asset('/img/123.PNG')}}">
-                                    </div>
-                                    <p class="font-bold">Netsuite</p>
-                                </div>
-                                <div class='col-md-3'>
-                                    <div class="m-b-sm">
-                                        <img alt="image" class="img-circle" style='width:100px;'  src="{{asset('/img/123.PNG')}}">
-                                    </div>
-                                    <p class="font-bold">SAP</p>
-                                </div>
-                            </div>
-                            
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class='row'>
-                <div class='col-md-12'>
-                    <div class="ibox float-e-margins">
-                        <div class="ibox-title">
-                            <h5>Events </h5>
-                        </div>
-                        <div class="ibox-content">
-                            <div id="calendar"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div class="col-md-8">
+            
+         
+           
         </div>
-        <div class="col-md-3">
+        <div class="col-md-2">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>{{date('M. d, Y')}} <i class="fa fa-clock-o icon-md text-info d-flex align-self-center mr-3"></i></h5> 
+                    <div class="ibox-tools">
+                        <span id='span' class="label label-warning-light pull-right"></span>
+                    </div>
+                </div>
+                <div class="ibox-content">
+                    
+                    <div class="card-body">
+                        <h3 class="card-title">
+                            </h3>
+                        <div class="media">
+                            
+                            <div class="media-body">
+                                <p class="card-text">Time In : 
+                                    NO TIME IN 
+                                    </p>
+                                
+                            </div>
+                            </div>
+                        </div>
+                </div>
+            </div>
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>Portals</h5>
+                </div>
+                <div class="ibox-content text-center">
+                    <input  placeholder="Search ..." class="form-control">
+                    <hr>
+                    <div class='row'>
+                        <div class='col-md-4'>
+                            <div class="m-b-sm">
+                                <img alt="image" class="img-circle " style='width:100%;' src="{{asset('/img/123.PNG')}}">
+                            </div>
+                            <p class="font-bold">EDMS</p>
+                        </div>
+                        <div class='col-md-4'>
+                            <div class="m-b-sm">
+                                <img alt="image" class="img-circle" style='width:100%;'   src="{{asset('/img/123.PNG')}}">
+                            </div>
+                            <p class="font-bold">NetSuite</p>
+                        </div>
+                        <div class='col-md-4'>
+                            <div class="m-b-sm">
+                                <img alt="image" class="img-circle" style='width:100%;'  src="{{asset('/img/123.PNG')}}">
+                            </div>
+                            <p class="font-bold">SAP</p>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>Bulletin & Memos</h5>
+                </div>
+                <div class="ibox-content">
+
+                    <div class="lightBoxGallery">
+                        <a href="{{asset('img/gallery/1.jpg')}}" title="Image from Unsplash" data-gallery="" ><img style='width:50px;' src="img/gallery/1s.jpg"></a>
+                        <a href="{{asset('img/gallery/2.jpg')}}" title="Image from Unsplash" data-gallery=""><img style='width:50px;' src="img/gallery/2s.jpg"></a>
+                        <a href="{{asset('img/gallery/2.jpg')}}" title="Image from Unsplash" data-gallery=""><img style='width:50px;' src="img/gallery/2s.jpg"></a>
+                        <a href="{{asset('img/gallery/2.jpg')}}" title="Image from Unsplash" data-gallery=""><img style='width:50px;' src="img/gallery/2s.jpg"></a>
+                        <a href="{{asset('img/gallery/2.jpg')}}" title="Image from Unsplash" data-gallery=""><img style='width:50px;' src="img/gallery/2s.jpg"></a>
+                        <a href="{{asset('img/gallery/2.jpg')}}" title="Image from Unsplash" data-gallery=""><img style='width:50px;' src="img/gallery/2s.jpg"></a>
+                        <a href="{{asset('img/gallery/2.jpg')}}" title="Image from Unsplash" data-gallery=""><img style='width:50px;' src="img/gallery/2s.jpg"></a>
+
+                        
+                    </div>
+
+                </div>
+            </div>
             <div class="ibox float-e-margins">
                 <div class="ibox-title">
                     <h5>Welcome new Hires</h5>
@@ -176,31 +173,12 @@
             </div>
             <div class="ibox float-e-margins">
                 <div class="ibox-title">
-                    <h5>Bulletin</h5>
-                </div>
-                <div class="ibox-content">
-
-                    <div class="lightBoxGallery">
-                        <a href="{{asset('img/gallery/1.jpg')}}" title="Image from Unsplash" data-gallery=""><img src="img/gallery/1s.jpg"></a>
-                        <a href="{{asset('img/gallery/2.jpg')}}" title="Image from Unsplash" data-gallery=""><img src="img/gallery/2s.jpg"></a>
-                        <a href="{{asset('img/gallery/3.jpg')}}" title="Image from Unsplash" data-gallery=""><img src="img/gallery/3s.jpg"></a>
-                        <a href="{{asset('img/gallery/4.jpg')}}" title="Image from Unsplash" data-gallery=""><img src="img/gallery/4s.jpg"></a>
-                        <a href="{{asset('img/gallery/5.jpg')}}" title="Image from Unsplash" data-gallery=""><img src="img/gallery/5s.jpg"></a>
-
-                        
-                    </div>
-
-                </div>
-            </div>
-            <div class="ibox float-e-margins">
-                <div class="ibox-title">
                     <h5>Birthday Celebrants</h5>
                     <div class="ibox-tools">
                         <span class="label label-warning-light pull-right">{{date('F Y')}}</span>
                         </div>
                 </div>
                 <div class="ibox-content">
-
                     <div>
                         <div class="feed-activity-list">
 
