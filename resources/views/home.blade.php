@@ -14,9 +14,9 @@
                     <div>
                         <img src="{{asset('img/a4.jpg')}}" class="img-circle img-sm circle-border" style='width:50px;height:50px;vertical-align:middle;' alt="profile">
                        
-                        <b><span style="">Alex Smith</span></b>
+                        <b><span style=""> {{auth()->user()->name}}</span></b>
                       </div>
-                      <h6><i class="fa fa-envelope"></i> renz.cabato@wgroup.com.ph <br></h6>
+                      <h6><i class="fa fa-envelope"></i>  {{auth()->user()->email}} <br></h6>
                       <h6><i class="fa fa-window-maximize"></i> Information Technology Department <br></h6>
                         <h6><i class="fa fa-briefcase"></i> System Development Head<br></h6>
                 </div>
@@ -80,10 +80,43 @@
                         <h3 class="card-title">
                             </h3>
                         <div class="media">
-                            
                             <div class="media-body">
                                 <p class="card-text">Time In : 
-                                    NO TIME IN 
+                                    @if($attendance_now != null){{date('h:i A',strtotime($attendance_now->time_in))}} <br>
+                                    @if($attendance_now->time_out == null )
+                                        @php
+                                          $employee_schedule = employeeSchedule($schedules,$attendance_now->time_in,$schedules[0]->schedule_id);
+                                          $estimated_out = "";
+                                          if($employee_schedule != null)
+                                          {
+                                            if(date('h:i A',strtotime($attendance_now->time_in)) < date('h:i A',strtotime($employee_schedule['time_in_from'])))
+                                            {
+                                                $estimated_out = date('h:i A',strtotime($employee_schedule['time_out_from']));
+                                            }
+                                            else
+                                            {
+                                                $hours = intval($employee_schedule['working_hours']);
+                                                $minutes = ($employee_schedule['working_hours']-$hours)*60;
+                                                $estimated_out = date('h:i A', strtotime("+".$hours." hours",strtotime($attendance_now->time_in)));
+                                                $estimated_out = date('h:i A', strtotime("+".$minutes." minutes",strtotime($estimated_out)));
+                                            }
+                                            if(date('h:i A',strtotime($attendance_now->time_in)) > date('h:i A',strtotime($employee_schedule['time_in_to'])))
+                                            {
+                                                $estimated_out = date('h:i A',strtotime($employee_schedule['time_out_to']));
+                                            }
+
+                                          }
+                                          else {
+                                            $estimated_out = "No Schedule";
+                                          }
+                                          
+                                        @endphp
+                                        Estimated Out : {{$estimated_out}} 
+                                     @else
+                                     Time Out : {{date('h:i A',strtotime($attendance_now->time_out))}}
+                                     @endif
+                                   @else NO TIME IN 
+                                   @endif
                                     </p>
                                 
                             </div>

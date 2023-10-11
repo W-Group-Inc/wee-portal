@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 use App\Portal;
+use App\ScheduleData;
 use Illuminate\Http\Request;
+
+use App\Http\Controllers\AttendanceController;
 use RealRashid\SweetAlert\Facades\Alert;
 class PortalController extends Controller
 {
@@ -10,10 +13,15 @@ class PortalController extends Controller
 
     public function index()
     {
+        $attendance_controller = new AttendanceController;
+        $attendance_now = $attendance_controller->get_attendances(date('Y-m-d'),date('Y-m-d'),auth()->user()->biometrics_code)->first();
+        $schedules = ScheduleData::where('schedule_id',auth()->user()->schedule)->get();
         $portals = Portal::where('status',null)->orderBy('title','asc')->get();
         return view('home',
         array(
             'portals' => $portals,
+            'attendance_now' => $attendance_now,
+            'schedules' => $schedules,
         ));
     }
 
