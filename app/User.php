@@ -41,4 +41,20 @@ class User extends Authenticatable
     {
         return $this->hasMany(Attendance::class,'biometrics_code','employee_code');
     }
+    public function employee()
+    {
+        return $this->belongsTo(Employee::class,'id','user_id');
+    }
+    public function employee_info()
+    {
+        return $this->belongsTo(Employee::class,'id','user_id')->select('id','user_id','position','department_id','company_id','location');
+    }
+    public function department()
+    {
+        return $this->belongsTo(Department::class);
+    }
+    public function company()
+    {
+        return $this->belongsTo(Company::class);
+    }
 }

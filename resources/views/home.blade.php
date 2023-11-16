@@ -2,332 +2,246 @@
 @section('css')
 
 <link href="{{asset('inside/login_css/css/plugins/blueimp/css/blueimp-gallery.min.css" rel="stylesheet')}}">
-<link href="{{asset('inside/login_css/css/plugins/fullcalendar/fullcalendar.css')}}" rel="stylesheet">
-<link href="{{asset('inside/login_css/css/plugins/fullcalendar/fullcalendar.print.css')}}" rel='stylesheet' media='print'>
 @endsection
 @section('content')
-<div class="wrapper wrapper-content">
+<div class="wrapper wrapper-content container">
     <div class="row">
-        <div class="col-lg-2">
+        <div class="col-lg-3">
             <div class="ibox">
                 <div class="ibox-content">
                     <div>
-                        <img src="{{asset('img/a4.jpg')}}" class="img-circle img-sm circle-border" style='width:50px;height:50px;vertical-align:middle;' alt="profile">
+                        <img src="{{asset(auth()->user()->employee->avatar)}}"  onerror="this.src='{{URL::asset('/images/no_image.png')}}';" class="img-circle img-sm circle-border" style='width:50px;height:50px;vertical-align:middle;' alt="profile">
                        
-                        <b><span style=""> {{auth()->user()->name}}</span></b>
+                        <b><span style=""> {{auth()->user()->name}}<br></span></b>
                       </div>
                       <h6><i class="fa fa-envelope"></i>  {{auth()->user()->email}} <br></h6>
-                      <h6><i class="fa fa-window-maximize"></i> Information Technology Department <br></h6>
-                        <h6><i class="fa fa-briefcase"></i> System Development Head<br></h6>
+                      <h6><i class="fa fa-window-maximize"></i> {{auth()->user()->employee->department->name}}  <br></h6>
+                        <h6><i class="fa fa-briefcase"></i> {{auth()->user()->employee->position}}<br></h6>
                 </div>
             </div>
             <div class="ibox">
                 <div class="ibox-title">
-                    <h5>Welcome to </h5><label class='label label-success'>W Group Inc.</label>
+                    <h5>Welcome to </h5><label class='label label-success'>{{auth()->user()->employee->company->company_name}}</label>
                 </div>
                 <div class="ibox-content">
                     <ul class="list-unstyled file-list">
-                        <li><a href=""><i class="fa fa-file"></i> Employee Handbook</a></li>
-                        <li><a href=""><i class="fa fa-file"></i> Code of Conduct</a></li>
-                        <li><a href=""><i class="fa fa-file"></i> Empleyado User Manual</a></li>
-                        <li><a href=""><i class="fa fa-file"></i> Empleyado Approver Manual</a></li>
-                        <li><a href=""><i class="fa fa-file"></i> Employee Orientation</a></li>
+                        @foreach($documents as $document)
+                        @include('view_document')
+                        <li><a href="#"  data-target="#view_document{{$document->id}}" data-toggle="modal" ><i class="fa fa-file"></i> {{$document->name}}</a></li>
+                        @endforeach
+                        <hr>
+                        <li><a href="#"  data-target="#public_forms" data-toggle="modal"><i class="fa fa-file"></i> Public Forms</a></li>
                     </ul>
                 </div>
             </div>
-            <div class="ibox">
-                <div class="ibox float-e-margins">
-                    <div class="ibox-content">
-                        <div class="file-manager">
-                            <h5>Public Forms </h5>
-                            <ul class="folder-list" style="padding: 0">
-                                <li><a href=""><i class="fa fa-folder"></i> ACC</a></li>
-                                <li><a href=""><i class="fa fa-folder"></i> APD</a></li>
-                                <li><a href=""><i class="fa fa-folder"></i> BCD</a></li>
-                                <li><a href=""><i class="fa fa-folder"></i> BMO</a></li>
-                                <li><a href=""><i class="fa fa-folder"></i> BPD</a></li>
-                                <li><a href=""><i class="fa fa-folder"></i> FMD</a></li>
-                                <li><a href=""><i class="fa fa-folder"></i> HRD</a></li>
-                                <li><a href=""><i class="fa fa-folder"></i> IAD</a></li>
-                                <li><a href=""><i class="fa fa-folder"></i> OTC</a></li>
-                                <li><a href=""><i class="fa fa-folder"></i> PRD</a></li>
-                                <li><a href=""><i class="fa fa-folder"></i> SQA</a></li>
-                                <li><a href=""><i class="fa fa-folder"></i> TMD</a></li>
-                                <li><a href=""><i class="fa fa-folder"></i> TRD</a></li>
-                            </ul>
-                            <div class="clearfix"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-8">
             
-         
-           
-        </div>
-        <div class="col-md-2">
-            <div class="ibox float-e-margins">
-                <div class="ibox-title">
-                    <h5>{{date('M. d, Y')}} <i class="fa fa-clock-o icon-md text-info d-flex align-self-center mr-3"></i></h5> 
-                    <div class="ibox-tools">
-                        <span id='span' class="label label-warning-light pull-right"></span>
-                    </div>
-                </div>
-                <div class="ibox-content">
-                    
-                    <div class="card-body">
-                        <h3 class="card-title">
-                            </h3>
-                        <div class="media">
-                            <div class="media-body">
-                                <p class="card-text">Time In : 
-                                    @if($attendance_now != null){{date('h:i A',strtotime($attendance_now->time_in))}} <br>
-                                    @if($attendance_now->time_out == null )
-                                        @php
-                                          $employee_schedule = employeeSchedule($schedules,$attendance_now->time_in,$schedules[0]->schedule_id);
-                                          $estimated_out = "";
-                                          if($employee_schedule != null)
-                                          {
-                                            if(date('h:i A',strtotime($attendance_now->time_in)) < date('h:i A',strtotime($employee_schedule['time_in_from'])))
-                                            {
-                                                $estimated_out = date('h:i A',strtotime($employee_schedule['time_out_from']));
-                                            }
-                                            else
-                                            {
-                                                $hours = intval($employee_schedule['working_hours']);
-                                                $minutes = ($employee_schedule['working_hours']-$hours)*60;
-                                                $estimated_out = date('h:i A', strtotime("+".$hours." hours",strtotime($attendance_now->time_in)));
-                                                $estimated_out = date('h:i A', strtotime("+".$minutes." minutes",strtotime($estimated_out)));
-                                            }
-                                            if(date('h:i A',strtotime($attendance_now->time_in)) > date('h:i A',strtotime($employee_schedule['time_in_to'])))
-                                            {
-                                                $estimated_out = date('h:i A',strtotime($employee_schedule['time_out_to']));
-                                            }
-
-                                          }
-                                          else {
-                                            $estimated_out = "No Schedule";
-                                          }
-                                          
-                                        @endphp
-                                        Estimated Out : {{$estimated_out}} 
-                                     @else
-                                     Time Out : {{date('h:i A',strtotime($attendance_now->time_out))}}
-                                     @endif
-                                   @else NO TIME IN 
-                                   @endif
-                                    </p>
-                                
-                            </div>
-                            </div>
-                        </div>
-                </div>
-            </div>
-            <div class="ibox float-e-margins">
-                <div class="ibox-title">
-                    <h5>Portals</h5>
-                </div>
-                <div class="ibox-content text-center">
-                    <input  placeholder="Search ..." class="form-control">
-                    <hr>
-                    <div class='row'>
-                        <div class='col-md-4'>
-                            <div class="m-b-sm">
-                                <img alt="image" class="img-circle " style='width:100%;' src="{{asset('/img/123.PNG')}}">
-                            </div>
-                            <p class="font-bold">EDMS</p>
-                        </div>
-                        <div class='col-md-4'>
-                            <div class="m-b-sm">
-                                <img alt="image" class="img-circle" style='width:100%;'   src="{{asset('/img/123.PNG')}}">
-                            </div>
-                            <p class="font-bold">NetSuite</p>
-                        </div>
-                        <div class='col-md-4'>
-                            <div class="m-b-sm">
-                                <img alt="image" class="img-circle" style='width:100%;'  src="{{asset('/img/123.PNG')}}">
-                            </div>
-                            <p class="font-bold">SAP</p>
-                        </div>
-                    </div>
-                    
-                </div>
-            </div>
-            <div class="ibox float-e-margins">
-                <div class="ibox-title">
-                    <h5>Bulletin & Memos</h5>
-                </div>
-                <div class="ibox-content">
-
-                    <div class="lightBoxGallery">
-                        <a href="{{asset('img/gallery/1.jpg')}}" title="Image from Unsplash" data-gallery="" ><img style='width:50px;' src="img/gallery/1s.jpg"></a>
-                        <a href="{{asset('img/gallery/2.jpg')}}" title="Image from Unsplash" data-gallery=""><img style='width:50px;' src="img/gallery/2s.jpg"></a>
-                        <a href="{{asset('img/gallery/2.jpg')}}" title="Image from Unsplash" data-gallery=""><img style='width:50px;' src="img/gallery/2s.jpg"></a>
-                        <a href="{{asset('img/gallery/2.jpg')}}" title="Image from Unsplash" data-gallery=""><img style='width:50px;' src="img/gallery/2s.jpg"></a>
-                        <a href="{{asset('img/gallery/2.jpg')}}" title="Image from Unsplash" data-gallery=""><img style='width:50px;' src="img/gallery/2s.jpg"></a>
-                        <a href="{{asset('img/gallery/2.jpg')}}" title="Image from Unsplash" data-gallery=""><img style='width:50px;' src="img/gallery/2s.jpg"></a>
-                        <a href="{{asset('img/gallery/2.jpg')}}" title="Image from Unsplash" data-gallery=""><img style='width:50px;' src="img/gallery/2s.jpg"></a>
-
-                        
-                    </div>
-
-                </div>
-            </div>
             <div class="ibox float-e-margins">
                 <div class="ibox-title">
                     <h5>Welcome new Hires</h5>
                     <div class="ibox-tools">
-                        <span class="label label-warning-light pull-right">{{date('F Y')}}</span>
+                        <span class="label label-warning-light pull-right">{{date('M. Y')}}</span>
                         </div>
                 </div>
                 <div class="ibox-content">
 
                     <div>
                         <div class="feed-activity-list">
-
+                            @foreach($employees as $employee)
                             <div class="feed-element">
-                                <a href="profile.html" class="pull-left">
-                                    <img alt="image" class="img-circle img-sm" src="{{asset('img/profile.jpg')}}">
+                                <a href="#" class="pull-left">
+                                    <img alt="image" class="img-circle img-sm"  src="{{URL::asset($employee->avatar)}}"  onerror="this.src='{{URL::asset('/images/no_image.png')}}';">
                                 </a>
                                 <div class="media-body ">
-                                    <small class="pull-right">Position <br>
-                                    {{date('M. d')}}</small>
-                                    <strong>Monica Smith</strong><br>
-                                    <small class="text-muted">W Group Inc.</small>
+                                    <small class="pull-right">{{date('M. d',strtotime($employee->original_date_hired))}}</small>
+                                    <strong>{{$employee->user->name}}</strong><br>
+                                    <small class="text-muted">{{$employee->company->company_name}}</small><br>
+                                    <small class="text-muted">{{$employee->position}}</small>
 
                                 </div>
                             </div>
-
+                            @endforeach
                         </div>
                     </div>
 
                 </div>
             </div>
+            
             <div class="ibox float-e-margins">
                 <div class="ibox-title">
                     <h5>Birthday Celebrants</h5>
                     <div class="ibox-tools">
-                        <span class="label label-warning-light pull-right">{{date('F Y')}}</span>
+                        <span class="label label-warning-light pull-right">{{date('M. Y')}}</span>
                         </div>
                 </div>
                 <div class="ibox-content">
                     <div>
                         <div class="feed-activity-list">
-
+                            @foreach($employee_birthday_celebrants as $birthdate)
                             <div class="feed-element">
-                                <a href="profile.html" class="pull-left">
-                                    <img alt="image" class="img-circle" src="img/profile.jpg">
+                                <a href="#" class="pull-left">
+                                    <img alt="image" class="img-circle" src="{{URL::asset($birthdate->avatar)}}"  onerror="this.src='{{URL::asset('/images/no_image.png')}}';">
                                 </a>
                                 <div class="media-body ">
-                                    <small class="pull-right">{{date('M. d')}}</small>
-                                    <strong>Monica Smith</strong><br>
-                                    <small class="text-muted">W Group Inc.</small>
+                                    <small class="pull-right">{{date('M. d',strtotime($birthdate->birth_date))}}</small>
+                                    <strong>{{$birthdate->user->name}}</strong><br>
+                                    <small class="text-muted">{{$birthdate->company->company_name}}</small>
 
                                 </div>
+                            </div>  
+                            @endforeach
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-9">
+           
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>Portals</h5>
+                    <small class="pull-right"><div class="input-group">
+                     
+                    </div></small>
+                </div>
+                <div class="ibox-content text-center">
+                    <div class='row'>
+                        <div class='col-md-12'>
+                            <input type="text" class="form-control form-control-sm" id="Search"
+                            onkeyup="myFunction()" placeholder="Search Here" aria-label="search"
+                            aria-describedby="search">
+                            <br>
+                        </div>
+                    </div>
+                    <div class='row'>
+                        @foreach($portals as $portal)
+                        <div class='col-md-2 target'>
+                            <a href='{{$portal->link}}' target='_blank'>
+                            <div class="m-b-sm">
+                                <img alt="image" class="img-circle " style='height:50px;' src="{{URL::asset($portal->image)}}">
+                            </div>
+                            <p class="font-bold">{{$portal->title}}</p>
+                            </a>
+                        </div>
+                        @endforeach
+                    </div>
+                    
+                </div>
+            </div>
+            <div class='row'>
+                <div class='col-md-8'>
+                    <div class="ibox-title">
+                        <h5><b>Whats new?</b> </h5>
+                    </div>
+                    <div class="ibox-content">
+                        <div class="social-feed-box">
+                            <div class="social-avatar">
+                                <a href="" class="pull-left">
+                                    <img alt="image" src="img/a6.jpg" onerror="this.src='{{URL::asset('/images/no_image.png')}}';">
+                                </a>
+                                <div class="media-body">
+                                    <a href="#">
+                                       Renz Christian Cabato
+                                    </a>
+                                    <small class="text-muted">{{date('m.d.Y h:i a')}}</small>
+                                </div>
+                            </div>
+                            <div class="social-body">
+                                <p>
+                                    Many desktop publishing packages and web page editors now use Lorem Ipsum as their
+                                    default model text, and a search for 'lorem ipsum' will uncover many web sites still
+                                    in their infancy. Packages and web page editors now use Lorem Ipsum as their
+                                    default model text.
+                                </p>
+                                <p>
+                                    Lorem Ipsum as their
+                                    default model text, and a search for 'lorem ipsum' will uncover many web sites still
+                                    in their infancy. Packages and web page editors now use Lorem Ipsum as their
+                                    default model text.
+                                </p>
+                                <img src="img/gallery/11.jpg" class="img-responsive">
                             </div>
 
                         </div>
                     </div>
+                </div>
+                <div class='col-md-4'>
+                    <div class="ibox float-e-margins">
+                        <div class="ibox-title">
+                            <h5><b>HR Boardcast</b> <small>(bulletin)</small></h5>
+                        </div>
+                        <div class="ibox-content">
+                            <div class="row">
+                                @foreach($bulletins as $bulletin)
+                                <div class='col-md-2 border'>
+                                    <a href="#"  data-target="#bulletins{{$bulletin->id}}" data-toggle="modal" data-gallery=""><img style='height:30px;' src="{{asset($bulletin->image)}}"></a>
+                                </div>
+                                @include('view_bulletin')
+                                @endforeach
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ibox float-e-margins">
+                        <div class="ibox-title">
+                            <h5><b>Upcomming Events</b></h5>
+                        </div>
+                        <div class="ibox-content">
+                            <div class="feed-activity-list">
 
+                                {{-- <div class="feed-element">
+                                    <a href=#" class="pull-left">
+                                        <img alt="image" class="img-rounded img-sm" src="{{asset('img/profile.jpg')}}">
+                                    </a>
+                                    <div class="media-body ">
+                                        <small class="pull-right">{{date('M. d')}}</small>
+                                        <strong>Christmas Party</strong><br>
+                                        <small class="text-muted"> 10:10 AM</small><br>
+    
+                                    </div>
+                                </div> --}}
+                                
+                                <div class='text-center'>
+                                    <strong class='text-center'><small><i>No Upcomming Events</i></small></strong>
+                                </div>
+    
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
+        
+        
+         
+           
         </div>
-
+       
     
     </div>
 </div>
-<script>
-  var span = document.getElementById('span');
-
-  function time() {
-  var d = new Date();
-  var s = d.getSeconds();
-  var m = d.getMinutes();
-  var h = d.getHours();
-  span.textContent = 
-      ("0" + h).substr(-2) + ":" + ("0" + m).substr(-2) + ":" + ("0" + s).substr(-2);
-  }
-
-  setInterval(time, 1000);
-</script>
-<script src="{{asset('inside/login_css/js/plugins/fullcalendar/moment.min.js')}}"></script>
+@include('public_forms')
 @endsection
 @section('footer')
-<script src="{{asset('inside/login_css/js/plugins/fullcalendar/fullcalendar.min.js')}}"></script>
+  <!-- Custom js for this page-->
+  <script src="{{ asset('inside/login_css/js/plugins/dataTables/datatables.min.js')}}"></script>
+  <script src="{{ asset('inside/login_css/js/plugins/chosen/chosen.jquery.js') }}"></script>
+  <script src="{{ asset('inside/login_css/js/plugins/blueimp/jquery.blueimp-gallery.min.js') }}"></script>
+  <script>
+      $(document).ready(function(){
+          
+  
+          $('.cat').chosen({width: "100%"});
+          $('.tables').DataTable({
+              pageLength: 10,
+              responsive: true,
+                bInfo : false,
+              dom: '<"html5buttons"B>lTfgitp',
+              buttons: [
+                  
+              ]
+  
+          });
+  
+      });
+  
+  </script>
 
-
-<script>
-
-    $(document).ready(function() {
-        var date = new Date();
-        var d = date.getDate();
-        var m = date.getMonth();
-        var y = date.getFullYear();
-
-        $('#calendar').fullCalendar({
-            header: {
-                left: 'prev,next today',
-                center: 'title',
-                right: 'month,agendaWeek,agendaDay'
-            },
-            editable: true,
-            droppable: true, // this allows things to be dropped onto the calendar
-            drop: function() {
-                // is the "remove after drop" checkbox checked?
-                if ($('#drop-remove').is(':checked')) {
-                    // if so, remove the element from the "Draggable Events" list
-                    $(this).remove();
-                }
-            },
-            events: [
-                {
-                    title: 'All Day Event',
-                    start: new Date(y, m, 1)
-                },
-                {
-                    title: 'Long Event',
-                    start: new Date(y, m, d-5),
-                    end: new Date(y, m, d-2)
-                },
-                {
-                    id: 999,
-                    title: 'Repeating Event',
-                    start: new Date(y, m, d-3, 16, 0),
-                    allDay: false
-                },
-                {
-                    id: 999,
-                    title: 'Repeating Event',
-                    start: new Date(y, m, d+4, 16, 0),
-                    allDay: false
-                },
-                {
-                    title: 'Meeting',
-                    start: new Date(y, m, d, 10, 30),
-                    allDay: false
-                },
-                {
-                    title: 'Lunch',
-                    start: new Date(y, m, d, 12, 0),
-                    end: new Date(y, m, d, 14, 0),
-                    allDay: false
-                },
-                {
-                    title: 'Birthday Party',
-                    start: new Date(y, m, d+1, 19, 0),
-                    end: new Date(y, m, d+1, 22, 30),
-                    allDay: false
-                },
-                {
-                    title: 'Click for Google',
-                    start: new Date(y, m, 28),
-                    end: new Date(y, m, 29),
-                    url: 'http://google.com/'
-                }
-            ]
-        });
-    });
-
-</script>
 @endsection

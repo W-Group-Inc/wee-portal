@@ -22,5 +22,11 @@ Route::group( ['middleware' => 'auth'], function()
     Route::get('deactivate-portal/{id}','PortalController@deactivate_portal');
     Route::get('activate-portal/{id}','PortalController@activate_portal');
     Route::get('/home', 'PortalController@index')->name('home');
+
+
+    Route::get('documents','DocumentController@index');
+
+    Route::get('bulletins','BulletinController@index');
+    Route::post('new-bulletin','BulletinController@store');
 });
 

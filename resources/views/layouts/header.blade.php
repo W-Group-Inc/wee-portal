@@ -23,10 +23,10 @@
     <link href="{{ asset('/inside/login_css/css/bootstrap.min.css')}}" rel="stylesheet">
     
     <link href="{{ asset('/inside/login_css/font-awesome/css/font-awesome.css')}}" rel="stylesheet">
-    
+    @yield('css')
     <link href="{{ asset('/inside/login_css/css/animate.css')}}" rel="stylesheet">
     <link href="{{ asset('/inside/login_css/css/style.css')}}" rel="stylesheet">
-    @yield('css')
+   
   <!-- End plugin css for this page -->
     <style>
       .center {
@@ -65,6 +65,17 @@
           opacity: .8;
           background-size:120px 120px;
       }
+      
+      .dataTables_filter {
+        float: right;
+        text-align: right;
+        }
+        .dataTables_info {
+        float: left;
+        text-align: left;
+        }
+        .shownext { display: none; }
+        li:hover + .shownext { display: block; }
     </style>
 </head>
 <body class="top-navigation">
@@ -72,13 +83,13 @@
     </div>
     <div id="wrapper">
       <div id="page-wrapper" class="gray-bg">
-        <div class="row border-bottom white-bg">
-          <nav class="navbar navbar-static-top" role="navigation">
+        <div class="row border-bottom white-bg ">
+          <nav class="navbar navbar-static-top container" role="navigation">
               <div class="navbar-header ">
                   <button aria-controls="navbar" aria-expanded="false" data-target="#navbar" data-toggle="collapse" class="navbar-toggle collapsed" type="button">
                       <i class="fa fa-reorder"></i>
                   </button>
-                  <a href="{{url('/')}}" onclick='show();' class="align-middle" > <img  style='margin-top:10px;margin-left:5px;margin-bottom:5px;' src="{{URL::asset('/images/MYPORTAL_logo.png')}}" height='45px' alt="AVATAR"></a>
+                  <a href="{{url('/')}}" onclick='show();' class="align-middle" > <img  style='margin-top:10px;margin-left:25px;margin-bottom:5px;' src="{{URL::asset('/images/MYPORTAL_logo.png')}}" height='45px' alt="AVATAR"></a>
               </div>
               <div class="navbar-collapse collapse justify-content-center" id="navbar">
                   
@@ -122,7 +133,6 @@
 <!-- Custom and plugin javascript -->
 <script src="{{ asset('inside/login_css/js/inspinia.js')}}"></script>
 <script src="{{ asset('inside/login_css/js/plugins/pace/pace.min.js')}}"></script>
-<script src="{{ asset('inside/login_css/js/plugins/blueimp/jquery.blueimp-gallery.min.js')}}"></script>
 @yield('footer')
 <script>
    function myFunction() {
