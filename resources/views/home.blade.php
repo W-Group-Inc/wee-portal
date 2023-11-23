@@ -115,10 +115,6 @@
                     
                     <div class='row'>
                         @foreach($portals as $key => $portal)
-                        @php
-                            $count = ($key+1)/6;
-                            $count_d = ($key+1)/5;
-                        @endphp
                             <div class='col-sm-2 target text-center'>
                                 <a href='{{$portal->link}}' target='_blank'>
                                 <div class="m-b-sm">
@@ -127,9 +123,9 @@
                                 <p class="font-bold">{{$portal->title}}</p>
                                 </a>
                             </div>
-                            </div>
                         @endforeach
                     
+                    </div>
                     </div>
                 </div>
             </div>
