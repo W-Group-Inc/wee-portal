@@ -133,6 +133,10 @@
                         <h5><b>Whats new?</b> </h5>
                     </div>
                     <div class="ibox-content">
+                        <div class='text-center'>
+                            <strong class='text-center'><small><i>No Announcements</i></small></strong>
+                        </div>
+{{-- 
                         <div class="social-feed-box">
                             <div class="social-avatar">
                                 <a href="" class="pull-left">
@@ -161,7 +165,7 @@
                                 <img src="img/gallery/11.jpg" class="img-responsive">
                             </div>
 
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
                 <div class='col-md-4'>

@@ -24,7 +24,7 @@ class PortalController extends Controller
         $attendance_now = $attendance_controller->get_attendances(date('Y-m-d'),date('Y-m-d'),auth()->user()->biometrics_code)->first();
         $schedules = ScheduleData::where('schedule_id',auth()->user()->schedule)->get();
         $portals = Portal::where('status',null)->orderBy('title','asc')->get();
-        $bulletins = Bulletin::get();
+        $bulletins = Bulletin::orderBy('id','desc')->get();
         return view('home',
         array(
             'portals' => $portals,
