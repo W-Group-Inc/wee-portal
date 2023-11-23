@@ -3,20 +3,11 @@
 
 <link href="{{asset('inside/login_css/css/plugins/blueimp/css/blueimp-gallery.min.css" rel="stylesheet')}}">
 <style>
-    .FixedHeightContainer
-{
-  float:right;
-  height: 250px;
-  width:250px; 
-  padding:3px; 
-    background:#f00;
-}
-.Content
-{
-  height:224px;
-   overflow:auto;
-    background:#fff;
-}
+ .bulletin_files{
+        overflow:scroll;
+        overflow-x: hidden;
+        max-height: 45vh;
+    }
 </style>
 @endsection
 @section('content')
@@ -112,14 +103,14 @@
         </div>
         <div class="col-md-9">
            
-            <div class="ibox float-e-margins FixedHeightContainer">
+            <div class="ibox float-e-margins ">
                 <div class="ibox-title">
                     <h5>Portals</h5>
                     <small class="pull-right"><div class="input-group">
                      
                     </div></small>
                 </div>
-                <div class="ibox-content Content">
+                <div class="ibox-content ">
                     <div class='row'>
                         <div class='col-md-12'>
                             <input type="text" class="form-control form-control-sm" id="Search"
@@ -130,6 +121,7 @@
                     </div>
                     
                     <div class='row'>
+                        <div class='bulletin_files'>
                         @foreach($portals as $key => $portal)
                             <div class='col-sm-3 target text-center'>
                                 <a href='{{$portal->link}}' target='_blank'>
@@ -139,7 +131,9 @@
                                 <p class="font-bold">{{$portal->title}}</p>
                                 </a>
                             </div>
+                        
                         @endforeach
+                        </div>
                     </div>
                 </div>
             </div>
