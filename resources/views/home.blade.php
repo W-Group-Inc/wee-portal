@@ -118,7 +118,7 @@
                             $count = ($key+1)/6;
                             $count_d = ($key+1)/5;
                         @endphp
-                        @if(($key+1 == 0 ) || (is_numberic($count)))
+                        @if(($key+1 == 1 ) || (floor($count) == $count))
                             <div class='row'>
                         @endif
                             <div class='col-sm-2 target text-center'>
@@ -129,8 +129,9 @@
                                 <p class="font-bold">{{$portal->title}}</p>
                                 </a>
                             </div>
-                            @if((is_numberic($count_d)))
-                        </div>
+                            </div>
+                        @if(floor($count_d) == $count_d)
+                            </div>
                         @endif
                         @endforeach
                     
