@@ -115,7 +115,7 @@
                     
                     <div class='row'>
                         @foreach($portals as $key => $portal)
-                            <div class='col-sm-2 target text-center'>
+                            <div class='col-sm-3 target text-center'>
                                 <a href='{{$portal->link}}' target='_blank'>
                                 <div class="m-b-sm">
                                     <img alt="image" class="img-fluid " style='height:50px;' src="{{URL::asset($portal->image)}}">
