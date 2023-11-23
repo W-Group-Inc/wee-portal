@@ -6,7 +6,7 @@
  .bulletin_files{
         overflow:scroll;
         overflow-x: hidden;
-        max-height: 45vh;
+        max-height: 10vh;
     }
 </style>
 @endsection
