@@ -112,18 +112,27 @@
                             <br>
                         </div>
                     </div>
-                    <div class='row'>
-                        @foreach($portals as $portal)
-                        <div class='col-sm-2 target text-center'>
-                            <a href='{{$portal->link}}' target='_blank'>
-                            <div class="m-b-sm">
-                                <img alt="image" class="img-fluid " style='height:50px;' src="{{URL::asset($portal->image)}}">
+                    
+                        @foreach($portals as $key => $portal)
+                        @php
+                            $count = ($key+1)/6;
+                            $count_d = ($key+1)/5;
+                        @endphp
+                        @if(($key+1 == 0 ) || (is_numberic($count)))
+                            <div class='row'>
+                        @endif
+                            <div class='col-sm-2 target text-center'>
+                                <a href='{{$portal->link}}' target='_blank'>
+                                <div class="m-b-sm">
+                                    <img alt="image" class="img-fluid " style='height:50px;' src="{{URL::asset($portal->image)}}">
+                                </div>
+                                <p class="font-bold">{{$portal->title}}</p>
+                                </a>
                             </div>
-                            <p class="font-bold">{{$portal->title}}</p>
-                            </a>
+                            @if((is_numberic($count_d)))
                         </div>
+                        @endif
                         @endforeach
-                    </div>
                     
                 </div>
             </div>
