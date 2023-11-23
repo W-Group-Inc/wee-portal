@@ -117,7 +117,7 @@
                         <div class='col-md-2 target'>
                             <a href='{{$portal->link}}' target='_blank'>
                             <div class="m-b-sm">
-                                <img alt="image" class="img-circle " style='height:50px;' src="{{URL::asset($portal->image)}}">
+                                <img alt="image" class="img-fluid " style='height:50px;' src="{{URL::asset($portal->image)}}">
                             </div>
                             <p class="font-bold">{{$portal->title}}</p>
                             </a>
