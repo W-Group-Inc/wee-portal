@@ -2,6 +2,22 @@
 @section('css')
 
 <link href="{{asset('inside/login_css/css/plugins/blueimp/css/blueimp-gallery.min.css" rel="stylesheet')}}">
+<style>
+    .FixedHeightContainer
+{
+  float:right;
+  height: 250px;
+  width:250px; 
+  padding:3px; 
+    background:#f00;
+}
+.Content
+{
+  height:224px;
+   overflow:auto;
+    background:#fff;
+}
+</style>
 @endsection
 @section('content')
 <div class="wrapper wrapper-content container">
@@ -96,14 +112,14 @@
         </div>
         <div class="col-md-9">
            
-            <div class="ibox float-e-margins">
+            <div class="ibox float-e-margins FixedHeightContainer">
                 <div class="ibox-title">
                     <h5>Portals</h5>
                     <small class="pull-right"><div class="input-group">
                      
                     </div></small>
                 </div>
-                <div class="ibox-content ">
+                <div class="ibox-content Content">
                     <div class='row'>
                         <div class='col-md-12'>
                             <input type="text" class="form-control form-control-sm" id="Search"
