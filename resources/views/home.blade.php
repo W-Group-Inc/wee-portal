@@ -113,14 +113,12 @@
                         </div>
                     </div>
                     
+                    <div class='row'>
                         @foreach($portals as $key => $portal)
                         @php
                             $count = ($key+1)/6;
                             $count_d = ($key+1)/5;
                         @endphp
-                        @if(($key+1 == 1 ) || (floor($count) == $count))
-                            <div class='row'>
-                        @endif
                             <div class='col-sm-2 target text-center'>
                                 <a href='{{$portal->link}}' target='_blank'>
                                 <div class="m-b-sm">
@@ -130,11 +128,9 @@
                                 </a>
                             </div>
                             </div>
-                        @if(floor($count_d) == $count_d)
-                            </div>
-                        @endif
                         @endforeach
                     
+                    </div>
                 </div>
             </div>
             <div class='row'>
