@@ -103,7 +103,7 @@
                      
                     </div></small>
                 </div>
-                <div class="ibox-content text-center">
+                <div class="ibox-content ">
                     <div class='row'>
                         <div class='col-md-12'>
                             <input type="text" class="form-control form-control-sm" id="Search"
@@ -114,7 +114,7 @@
                     </div>
                     <div class='row'>
                         @foreach($portals as $portal)
-                        <div class='col-md-2 target'>
+                        <div class='col-sm-2 target text-center'>
                             <a href='{{$portal->link}}' target='_blank'>
                             <div class="m-b-sm">
                                 <img alt="image" class="img-fluid " style='height:50px;' src="{{URL::asset($portal->image)}}">
