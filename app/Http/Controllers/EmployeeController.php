@@ -7,6 +7,7 @@ use App\Bank;
 use App\Level;
 use App\Company;
 use App\Classification;
+use App\EmployeeCompany;
 use App\Department;
 use App\Employee;
 use App\User;
