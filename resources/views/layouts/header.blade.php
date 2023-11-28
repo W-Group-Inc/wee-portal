@@ -1,6 +1,13 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
+  @php
+  ini_set('upload_max_filesize', '1000M');
+  ini_set('post_max_size', '24000M');
+  ini_set('max_input_time', '24000');
+  ini_set('max_execution_time', '24000');
+  ini_set('memory_limit', '-1');
+  @endphp
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
