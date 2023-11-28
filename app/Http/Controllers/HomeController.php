@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\AttendanceController;
 use Illuminate\Http\Request;
 use App\Portal;
+
 class HomeController extends Controller
 {
     /**

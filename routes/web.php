@@ -11,7 +11,8 @@
 |
 */
 
-
+Route::get('register-employee','EmployeeController@index');
+Route::post('new-employee', 'EmployeeController@new');
 
 Auth::routes();
 Route::group( ['middleware' => 'auth'], function()
@@ -28,5 +29,7 @@ Route::group( ['middleware' => 'auth'], function()
 
     Route::get('bulletins','BulletinController@index');
     Route::post('new-bulletin','BulletinController@store');
+
+  
 });
 

@@ -3,9 +3,9 @@
 <head>
   @php
   ini_set('upload_max_filesize', '1000M');
-  ini_set('post_max_size', '24000M');
-  ini_set('max_input_time', '24000');
-  ini_set('max_execution_time', '24000');
+  ini_set('post_max_size', '100M');
+  ini_set('max_input_time', '1000');
+  ini_set('max_execution_time', '1000');
   ini_set('memory_limit', '-1');
   @endphp
     <meta charset="utf-8">
@@ -37,11 +37,11 @@
   <!-- End plugin css for this page -->
     <style>
       .center {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 50%;
-}
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 50%;
+      }
       /* width */
       ::-webkit-scrollbar {
         width: 5px;

@@ -39,5 +39,6 @@
 	</script>
 	<script src="{{ asset('/login_css/vendor/jquery/jquery-3.2.1.min.js')}}"></script>
 	<script src="{{ asset('/login_css/js/main.js')}}"></script>
+    @include('sweetalert::alert')
 </body>
 </html>
