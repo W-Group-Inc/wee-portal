@@ -155,16 +155,16 @@
                         <input type="date" name="date_hired" class='form-control form-control-sm required' placeholder="Start Date"/>
                         </div>
                         <div class='col-md-4'>
-                        Work Email
-                        <input type="email" name="work_email" class='form-control form-control-sm required' placeholder="Work Email" required/>
+                        Company Email
+                        <input type="email" name="work_email" class='form-control form-control-sm required' placeholder="Company Email" required/>
                         </div>
                         <div class='col-md-4'>
-                            Employee Code
+                            Employee Code <small><i>ID No. front of Company ID</i></small>
                             <input type="text" name="employee_code" class='form-control form-control-sm required' placeholder="Employee Code" required/>
                           </div>
                         <div class='col-md-4'>
                             Biometric Code
-                            <input type="text" name="biometric_code" class='form-control form-control-sm required' placeholder="BIOMETRIC CODE"/>
+                            <input type="text" name="biometric_code" class='form-control form-control-sm ' placeholder="BIOMETRIC CODE"/>
                           </div>
                         <div class='col-md-4'>
                         Schedule
