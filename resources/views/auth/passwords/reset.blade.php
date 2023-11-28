@@ -1,65 +1,47 @@
 @extends('layouts.app')
-
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Reset Password') }}</div>
 
-                <div class="card-body">
-                    <form method="POST" action="{{ route('password.update') }}">
-                        @csrf
-
+<div class="limiter">
+    <div class="container-login100">
+        <div class="wrap-login100 p-t-15 p-b-50">
+            <form method="POST" action="{{ route('password.update') }}" onsubmit='show()'>
+                @csrf
                         <input type="hidden" name="token" value="{{ $token }}">
-
-                        <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ $email ?? old('email') }}" required autofocus>
-
-                                @if ($errors->has('email'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
-
-                                @if ($errors->has('password'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
-                            </div>
-                        </div>
-
-                        <div class="form-group row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Reset Password') }}
-                                </button>
-                            </div>
-                        </div>
-                    </form>
+                <span class="login100-form-avatar" style='width:400px;'>
+                    <img src="{{URL::asset('/images/MYPORTAL_logo.png')}}" alt="AVATAR">
+                </span>
+                <div class="wrap-input100 validate-input m-t-15 m-b-35" data-validate = "Enter Email">
+                    <input id="email" type="email" class="input100{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ $email ?? old('email') }}" required autofocus>
+                    <span class="focus-input100" data-placeholder="Enter Email"></span>
                 </div>
-            </div>
+                <div class="wrap-input100 validate-input m-b-50" data-validate="Enter password">
+                    <input id="password" type="password" class="input100{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
+                    <span class="focus-input100" data-placeholder="Password"></span>
+                </div>
+                <div class="wrap-input100 validate-input m-b-50" data-validate="Confirm Password">
+                <input id="password-confirm" type="password" class="input100" name="password_confirmation" required>
+                <span class="focus-input100" data-placeholder="Confirm Password"></span>
+                </div>
+                <div class="container-login100-form" style='padding-bottom:10px;'>
+                        @if ($errors->has('email'))
+                        <button class="login100-form">
+                            <strong style='color:red;'>{{ $errors->first('email') }}</strong>
+                        </button>
+                        @endif
+                        @if ($errors->has('password'))
+                        <button class="login100-form">
+                            <strong style='color:red;'>{{ $errors->first('password') }}</strong>
+                        </button>
+                        @endif
+                    </div>
+                <div class="container-login100-form-btn">
+                <button class="login100-form" type='submit'  >
+                    {{ __('Reset Password') }}
+                </button>
+                </div>
+            </form>
         </div>
     </div>
 </div>
+
 @endsection
