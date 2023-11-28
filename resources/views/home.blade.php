@@ -38,6 +38,8 @@
                         @endforeach
                         <hr>
                         <li><a href="#"  data-target="#public_forms" data-toggle="modal"><i class="fa fa-file"></i> Public Forms</a></li>
+                        <hr>
+                        <li><a href="https://docs.google.com/spreadsheets/d/1pPMcr_zVFEl8EP1iPGAtFEHSoQxsIKnbzmpTeqBh-Q8/edit?pli=1#gid=2100853057" target='_blank'><i class="fa fa-phone-square"></i> Telephone Directory</a></li>
                     </ul>
                 </div>
             </div>
