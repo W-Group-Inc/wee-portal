@@ -10,12 +10,11 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+Auth::routes(['register' => false]);
+Route::get('register','EmployeeController@index');
 Route::get('register-employee','EmployeeController@index');
 Route::post('new-employee', 'EmployeeController@new');
-Route::get('register','EmployeeController@index');
-
-Auth::routes();
+// Auth::routes();
 Route::group( ['middleware' => 'auth'], function()
 {
     Route::get('/', 'PortalController@index');
@@ -32,5 +31,6 @@ Route::group( ['middleware' => 'auth'], function()
     Route::post('new-bulletin','BulletinController@store');
 
   
-});
+}
+);
 
