@@ -13,6 +13,7 @@
 
 Route::get('register-employee','EmployeeController@index');
 Route::post('new-employee', 'EmployeeController@new');
+Route::get('register','EmployeeController@index');
 
 Auth::routes();
 Route::group( ['middleware' => 'auth'], function()
